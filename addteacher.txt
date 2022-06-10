@@ -1,0 +1,36 @@
+app.post("/addteacher", (req, res) => {
+  // console.log(req.body.c.department_name)
+  const teacher_name = req.body.t.teacher_name;
+  const teacher_email = req.body.t.teacher_email;
+  const teacher_password = req.body.t.teacher_password;
+  const course_name = req.body.t.course_name;
+  const role = 2;
+
+  const sql = "select course_id from courses where course_name=?";
+  const s = "insert into allusers (email,password,role_id) values(?,?,?) ";
+  const checkuser = "select * from allusers where email=?";
+  const allcourses = req.body.t.values;
+  db.query(checkuser, [teacher_email], (err, result) => {
+    console.log(result.length);
+
+    if (result.length == 1) {
+      res.send({ e: 0 });
+    } else {
+      db.query(sql, [course_name], (err, result1) => {
+        const sql2 =
+          "insert into teacher (teacher_name,teacher_password,teacher_email,course_id) values (?,?,?,?)";
+        db.query(
+          sql2,
+          [teacher_name, teacher_password, teacher_email, result1[0].course_id],
+          (err, result) => {
+            console.log(err);
+
+            db.query(s, [teacher_email, teacher_password, role], (err, r) => {
+              res.send({ e: 1 });
+            });
+          }
+        );
+      });
+    }
+  });
+});

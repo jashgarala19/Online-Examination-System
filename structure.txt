@@ -1,0 +1,51 @@
+teacher
+  class
+  - ce-a
+  - ce-b
+
+  course
+   -WT
+
+
+  department
+    IT
+    CE
+
+
+department-course
+ -course
+    wt
+ -department
+   ce
+   it
+   ai
+
+
+student
+  class
+  -ce-a
+  department
+  -ce
+  
+  course
+  ?
+
+
+
+
+
+
+get teacher course
+get teacher dep from dep-course
+get teacher class from class 
+
+
+course
+   department
+      class
+@material-ui/picker 
+
+
+
+
+

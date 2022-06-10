@@ -1,0 +1,56 @@
+ 
+ 
+
+
+ 
+ SELECT classes.class_name from classes INNER JOIN class_teacher ON classes.class_id=class_teacher.-- class_id WHERE class_teacher.teacher_id=17;
+
+-- what classes are assigned to teacher
+
+
+
+
+ SELECT department.department_name from department INNER JOIN department_course ON department.department_id=department_course.department_id WHERE department_course.course_id=5 ;
+ --- what are the departments for a given course  ---
+ 
+
+
+ SELECT courses.course_name from courses INNER JOIN department_course ON courses.course_id=department_course.course_id -- WHERE department_course.department_id=2 ;
+ --- what are the courses for a given department  ---
+
+
+
+ SELECT courses.course_name from courses INNER JOIN department_course ON courses.course_id=department_course.course_id    WHERE department_course.department_id=( SELECT department.department_id from student  INNER JOIN classes ON student.class_id=classes.class_id INNER JOIN department ON classes.department_id = department.department_id  WHERE student.student_id=1);
+
+--- what courses are assigned to student ---
+
+
+
+
+
+
+
+
+
+ SELECT department.department_name from department INNER JOIN classes ON department.department_id=classes.department_id INNER JOIN class_teacher ON classes.class_id = class_teacher.class_id  WHERE class_teacher.teacher_id=17;
+
+ 
+
+SELECT     teacher.teacher_id,teacher.teacher_name,teacher.teacher_email,GROUP_CONCAT(courses.course_name) as allcourses from  teacher INNER JOIN teacher_course ON teacher.teacher_id=teacher_course.teacher_id INNER JOIN  courses  ON courses.course_id=teacher_course.course_id GROUP BY teacher.teacher_id
+ ORDER BY teacher.teacher_id ASC 
+
+
+
+ same but with where clause 
+
+
+
+SELECT     teacher.teacher_id,teacher.teacher_name,teacher.teacher_email,GROUP_CONCAT(courses.course_name) as allcourses from  teacher INNER JOIN teacher_course ON teacher.teacher_id=teacher_course.teacher_id INNER JOIN  courses  ON courses.course_id=teacher_course.course_id  where teacher.teacher_email='levi@gmail.com' GROUP BY teacher.teacher_id
+ ORDER BY teacher.teacher_id ASC 
+ ----get teacher all courses-------
+
+
+ 
+ select student.student_id,student.student_name,exam.Exam_name,exam.Exam_dt,question_bank.MarksPerQuestion,student_marks.marks,student_marks.marks_out_of  from student INNER JOIN student_exam ON student_exam.student_id=student.student_id INNER JOIN exam ON exam.Exam_id=student_exam.exam_id INNER JOIN question_bank ON exam.QuestionBank_id=question_bank.QuestionBank_id INNER JOIN student_marks  ON student_marks.studentexam_id = student_exam.studentexam_id where student_exam.student_id=15
+
+----get student marks------

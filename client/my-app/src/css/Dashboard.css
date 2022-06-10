@@ -1,0 +1,30 @@
+*
+{
+    padding:0px;
+    margin:0px;
+}
+body {
+    height: 100%;
+    font-family: "Roboto Mono", monospace;
+
+}
+.main
+{
+    display:flex;
+    flex-direction: column;
+
+}
+.Nav-MainDashboard
+{
+display:flex;
+flex-direction: row;
+
+}
+
+.try
+{
+
+font-size: 14px;
+font-style: italic;
+padding-top: 9px;
+}

@@ -1,0 +1,64 @@
+#include <dht.h>
+#define mypin 5
+dht DHT;
+int choice;
+void setup()
+{
+  Serial.begin(115200);
+  Serial.println("Select an option:");
+  Serial.println("1. Display temprature only\n");
+  Serial.println("2. Display Humidity only\n");
+  Serial.println("3. Display temprature and humidity \n");
+  
+  
+}
+void askuser()
+{
+  Serial.println("Select an option:");
+  Serial.println("1. Display temprature only\n");
+  Serial.println("2. Display Humidity only\n");
+  Serial.println("3. Display temprature and humidity \n");
+}
+void loop()
+{
+  DHT.read11(mypin);
+  choice  = Serial.parseInt();
+  if (Serial.available())
+  {
+    if (choice == 1)
+    {
+      Serial.println("-----------");
+      Serial.print("Temprature:");
+      Serial.println(DHT.temperature, 1);
+      Serial.println("-----------");
+
+      askuser();
+    }
+    else if (choice == 2)
+    {
+      Serial.println("-----------");
+      Serial.print("Humidity:");
+      Serial.println(DHT.humidity, 1);
+      Serial.println("-----------");
+      askuser();
+
+    }
+    else if (choice == 3)
+    {
+      Serial.println("---------------------------");
+      Serial.print("Humidity:");
+      Serial.print(DHT.humidity, 1);
+      Serial.print(",");
+      Serial.print("Temprature:");
+      Serial.println(DHT.temperature, 1);
+      Serial.println("--------------------------");
+      askuser();
+    }
+    else
+    {
+      Serial.println("Wrong choice");
+      askuser();
+    }
+  }
+  delay(2000);
+}

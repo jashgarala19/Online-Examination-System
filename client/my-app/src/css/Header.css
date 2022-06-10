@@ -1,0 +1,60 @@
+.header {
+
+    width:100%;
+    /* border:1px solid yellow; */
+    height:7vh;
+background-color:#19212c;
+padding-left: 15px;
+display: flex;
+align-items: center;
+justify-content:space-between;
+color:White;
+position: fixed;
+top: 0;
+font-size: 2.2vh;
+
+}
+.cl2
+{
+    display:flex;
+    /* border:1px solid red; */
+    width:50%;
+    justify-content:space-evenly;
+
+}
+.type
+{
+
+    background-color:#364458;
+    padding-left:5px;
+    padding-right:5px;
+    border-radius: 3px;
+
+}
+@media only screen and (max-width:500px) {
+    /* For tablets: */
+   .header
+   {
+    width:100%; 
+    flex-wrap: wrap;
+
+
+justify-content:center;
+display:flex;
+align-items: center;
+/* height:200px; */
+padding-bottom:10px;
+
+box-sizing: border-box;
+    height:80px;
+   }
+
+   .type
+   {
+    padding:0px;
+   }
+   .cl2
+   {
+       width: 100%;
+   }
+  }
